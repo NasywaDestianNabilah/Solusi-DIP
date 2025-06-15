@@ -1,0 +1,21 @@
+class Payment:
+    def pay(self, amount): pass
+
+class PayPal(Payment):
+    def pay(self, amount):
+        print(f"Paying {amount} via PayPal")
+
+class BankTransfer(Payment):
+    def pay(self, amount):
+        print(f"Paying {amount} via Bank Transfer")
+
+class PaymentFactory:
+    @staticmethod
+    def get_payment(method):
+        if method == "paypal":
+            return PayPal()
+        elif method == "bank":
+            return BankTransfer()
+
+payment_method = PaymentFactory.get_payment("paypal")
+payment_method.pay(100)
