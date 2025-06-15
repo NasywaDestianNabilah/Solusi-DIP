@@ -1,0 +1,21 @@
+class CompressionStrategy:
+    def compress(self, files): pass
+
+class ZipCompression(CompressionStrategy):
+    def compress(self, files):
+        print("Compressing files using ZIP")
+
+class RarCompression(CompressionStrategy):
+    def compress(self, files):
+        print("Compressing files using RAR")
+
+class Compressor:
+    def __init__(self, strategy):
+        self.strategy = strategy
+
+    def compress_files(self, files):
+        self.strategy.compress(files)
+
+zip_strategy = ZipCompression()
+compressor = Compressor(zip_strategy)
+compressor.compress_files(["file1.txt", "file2.txt"])
